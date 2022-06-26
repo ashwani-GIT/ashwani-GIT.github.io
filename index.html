@@ -11,17 +11,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <style>
         .proj-img {
-            height: 200px;
+            height: 150px;
             background-color: #eee;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 50px;
+            text-transform: capitalize;
         }
 
         .badge-custom {
             background-color: #ccc;
             font-size: .5em;
+        }
+        .card .proj-img{
+            height: 15rem;
+        }
+
+        .portfolio .row div{
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -30,7 +38,7 @@
 
     <div class="container">
         <h1>My Portfolio</h1>
-        <div class="row" id="portfolio">
+        <div class="portfolio" id="portfolio">
 
         </div>
     </div>
@@ -62,8 +70,8 @@
                 'badge': 'Public'
             },
             {
-                'img': 'node-tut',
-                'title': 'node-tut',
+                'img': 'laravel',
+                'title': 'laravel-demo',
                 'desc': 'create some application experiments in laravel and some demo code  - in <b>PHP</b>, <b>jQuery</b>, <b>Laravel</b>',
                 'link': 'https://github.com/ashwani-GIT/laravel-demo',
                 'badge': 'Public'
@@ -75,7 +83,7 @@
                 'link': 'https://github.com/ashwani-GIT/node-tut',
                 'badge': 'Public'
             },
-           
+
             {
                 'img': 'aihms',
                 'title': 'aihms',
@@ -108,7 +116,7 @@
 
         var template = function (obj) {
             return '<div class="col-md-4">\
-                <div class="card" style="width: 18rem;">\
+                <div class="card">\
                     <div class="proj-img">'+ obj.img + '</div>\
                     <div class="card-body">\
                         <h5 class="card-title">'+ obj.title + ' <span class="badge badge-pill badge-primary badge-custom">' + obj.badge + '</span></h5>\
@@ -121,13 +129,21 @@
 
         function drawCards() {
             var htmls = [];
+            var html = '';
             awi_proj.map(function (v, k) {
-                htmls.push(template(v));
+                if (k % 3 == 0 && k !== 0) {
+                    htmls.push(html);
+                    html = '';
+                } else if (k == awi_proj.length - 1) {
+                    htmls.push(html);
+                }
+                html += template(v);
                 return v;
             });
 
             let nodes = htmls.map(html => {
                 let div = document.createElement('div');
+                div.classList = 'row';
                 div.innerHTML = html;
                 return div;
             });
