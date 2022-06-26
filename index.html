@@ -1,3 +1,143 @@
-<html>
-Hrllo dsfsdf
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>My Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        .proj-img {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .badge-custom {
+            background-color: #ccc;
+            font-size: .5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>My Portfolio</h1>
+        <div class="row" id="portfolio">
+
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        var awi_proj = [
+            {
+                'img': 'wame',
+                'title': 'wame',
+                'desc': 'whatsapp direct message app , here <b>ReactNative</b> used ',
+                'link': 'https://github.com/ashwani-GIT/wame',
+                'badge': 'Public'
+            },
+            {
+                'img': 'form',
+                'title': 'form-assignment',
+                'desc': 'form-assignment with <b>jQuery</b> validation and form submition into <b>PHP</b> (using ajax) and saved into the json file.s',
+                'link': 'https://github.com/ashwani-GIT/form-assignment',
+                'badge': 'Public'
+            },
+            {
+                'img': 'cart',
+                'title': 'Cart Management',
+                'desc': 'Cart Management with some give task check the given link below -- used  <b>PHP</b>, <b>jQuery</b>',
+                'link': 'https://github.com/ashwani-GIT/cart-magmt',
+                'badge': 'Public'
+            },
+            {
+                'img': 'node-tut',
+                'title': 'node-tut',
+                'desc': 'create some application experiments in laravel and some demo code  - in <b>PHP</b>, <b>jQuery</b>, <b>Laravel</b>',
+                'link': 'https://github.com/ashwani-GIT/laravel-demo',
+                'badge': 'Public'
+            },
+            {
+                'img': 'node-tut',
+                'title': 'node-tut',
+                'desc': 'node test with aws - in <b>node js</b> ',
+                'link': 'https://github.com/ashwani-GIT/node-tut',
+                'badge': 'Public'
+            },
+           
+            {
+                'img': 'aihms',
+                'title': 'aihms',
+                'desc': 'used to create the invoices and Purchase order for agrawal harware -- inventory managment system -- used <b>PHP</b>, <b>jQuery</b> ',
+                'link': 'https://github.com/ashwani-GIT/ahims',
+                'badge': 'Private'
+            },
+            {
+                'img': 'zporto',
+                'title': 'zporto',
+                'desc': 'a templating based project that is in intail phase -- used for the manage the stock portfolio ',
+                'link': 'https://github.com/ashwani-GIT/zporto',
+                'badge': 'Private'
+            },
+            {
+                'img': 'cswri-sheep',
+                'title': 'cswri-sheep',
+                'desc': 'Realted project to the CSWRI internal thing to handle some data -- it is a desktop application built in php',
+                'link': 'https://github.com/ashwani-GIT/cswri-sheep',
+                'badge': 'Private'
+            },
+            {
+                'img': 'makingspark',
+                'title': 'makingspark',
+                'desc': 'An internal project',
+                'link': 'https://github.com/ashwani-GIT/makingspark',
+                'badge': 'Private'
+            }
+        ];
+
+        var template = function (obj) {
+            return '<div class="col-md-4">\
+                <div class="card" style="width: 18rem;">\
+                    <div class="proj-img">'+ obj.img + '</div>\
+                    <div class="card-body">\
+                        <h5 class="card-title">'+ obj.title + ' <span class="badge badge-pill badge-primary badge-custom">' + obj.badge + '</span></h5>\
+                        <p class="card-text">'+ obj.desc + '</p>\
+                        <a href="'+ obj.link + '" class="btn btn-primary">Open</a>\
+                    </div>\
+                </div>\
+            </div>';
+        }
+
+        function drawCards() {
+            var htmls = [];
+            awi_proj.map(function (v, k) {
+                htmls.push(template(v));
+                return v;
+            });
+
+            let nodes = htmls.map(html => {
+                let div = document.createElement('div');
+                div.innerHTML = html;
+                return div;
+            });
+
+            document.querySelector('#portfolio').append(...nodes);
+            // document.querySelector('#portfolio').append(html);
+        }
+        drawCards();
+
+    </script>
+</body>
+
 </html>
